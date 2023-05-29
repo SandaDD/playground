@@ -20,7 +20,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev-env
     steps:
-      - name: echo "$variables.DUMMY_VALUE"
+      - name: echo env variable name
+        run: echo "$variables.DUMMY_VALUE"
 
   login:
     runs-on: ubuntu-latest
