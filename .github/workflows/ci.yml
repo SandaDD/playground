@@ -21,6 +21,8 @@ jobs:
     environment: dev-env
     steps:
       - name: echo env variable name
+        env: 
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
 
   login:
