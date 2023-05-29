@@ -20,10 +20,12 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev-env
     steps:
-      - name: echo env variable name
+      - name: echo env variable name and context values
         env: 
           GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
+        run: | 
+          echo "$GITHUB_CONTEXT"
+          echo "$vars.DUMMY_VALUE"
 
   login:
     runs-on: ubuntu-latest
