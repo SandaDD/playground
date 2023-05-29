@@ -23,9 +23,10 @@ jobs:
       - name: echo env variable name and context values
         env: 
           GITHUB_CONTEXT: ${{ toJSON(github) }}
+          ENV_VAR: ${{ toJSON(vars.DUMMY_VALUE) }}
         run: | 
           echo "$GITHUB_CONTEXT"
-          echo "$vars.DUMMY_VALUE"
+          echo "$ENV_VAR"
 
   login:
     runs-on: ubuntu-latest
