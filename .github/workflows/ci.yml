@@ -21,7 +21,7 @@ jobs:
     environment: dev-env
     steps:
       - name: echo env variable name
-        run: echo "$variables.DUMMY_VALUE"
+        run: echo "$GITHUB_CONTEXT"
 
   login:
     runs-on: ubuntu-latest
