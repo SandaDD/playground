@@ -57,5 +57,6 @@ jobs:
           echo test, and deploy your project.
           
   reusable_workflow:
+    needs: [build, login]
     uses: ./.github/workflows/reusable_workflow.yml
           
