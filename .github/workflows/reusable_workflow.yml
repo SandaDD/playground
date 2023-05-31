@@ -6,6 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - 
-        name: echo welcome message
+        name: Welcome message
         run: echo Welcome to reusable workflow!
         
