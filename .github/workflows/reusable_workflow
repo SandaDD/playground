@@ -1,0 +1,11 @@
+on:
+  workflow_call
+  
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: echo welcome message
+        run: echo Welcome to reusable workflow!
+        
