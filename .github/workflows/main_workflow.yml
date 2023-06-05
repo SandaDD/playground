@@ -15,7 +15,24 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  
+
+  save_output:
+    runs-on: ubuntu-latest
+    outputs:
+      output: ${{ steps.step.outputs.test }}
+    steps:
+      - id: step
+        run: echo "test=hello" >> "$GITHUB_OUTPUT"
+
+  use_saved_output:
+    runs-on: ubuntu-latest
+    needs: save_output
+    steps:
+      - env:
+          OUTPUT: ${{needs.save_output.outputs.output}}
+        run: echo "$OUTPUT"
+
+
   test_new_env:
     runs-on: ubuntu-latest
     environment: dev-env
