@@ -19,12 +19,11 @@ jobs:
   save_output:
     runs-on: ubuntu-latest
     outputs:
-      output: ${{ steps.step.outputs.test.secondOutput }}
+      output: ${{ steps.step.outputs.test }}
     steps:
       - id: step
         run: |
-          echo "test=hello" >> "$GITHUB_OUTPUT"
-          echo "test.secondOutput=hello again" >> "$GITHUB_OUTPUT2"
+          echo "test=hello" >> "$STEP_OUTPUT"
 
 
   use_saved_output:
