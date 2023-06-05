@@ -22,12 +22,10 @@ jobs:
       output: ${{ steps.step1.outputs.test }}
     steps:
       - name: step 1
-        id: step1
         # {name}={value} >> "$GITHUB_OUTPUT"
         run: |
           echo "test=hello" >> "$GITHUB_OUTPUT" 
       - name: step 2
-        id: step2
         run: echo "${{steps.step1.outputs.test}}"
 
 
