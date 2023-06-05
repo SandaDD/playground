@@ -23,7 +23,7 @@ jobs:
     steps:
       - id: step
         run: |
-          echo "test=hello" >> "$STEP_OUTPUT"
+          echo "test=hello" >> "$GITHUB_OUTPUT"
 
 
   use_saved_output:
