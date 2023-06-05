@@ -32,7 +32,7 @@ jobs:
     needs: save_output
     steps:
       - env:
-          OUTPUT: ${{needs.save_output.outputs.output.test.secondOutput}}
+          OUTPUT: ${{needs.save_output.outputs.output.test}}
         run: echo "$OUTPUT"
 
 
