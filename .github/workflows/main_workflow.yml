@@ -16,16 +16,18 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
-  save_output:
+  save_output: #<- job ID
     runs-on: ubuntu-latest
     outputs: #declaring output(s) for specific job
       output: ${{ steps.step1.outputs.test }}
     steps:
-      - name: step 1
+      - name: step 1 
+        id: step1 #<- optional step ID
         # {name}={value} >> "$GITHUB_OUTPUT"
         run: |
           echo "test=hello" >> "$GITHUB_OUTPUT" 
       - name: step 2
+        id: step2
         run: echo "${{steps.step1.outputs.test}}"
 
 
