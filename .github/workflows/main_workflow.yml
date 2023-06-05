@@ -24,7 +24,7 @@ jobs:
       - id: step
         run: |
           echo "test=hello" >> "$GITHUB_OUTPUT"
-          echo "test.seoncdOutput=hello again" >> "$GITHUB_OUTPUT"
+          echo "test.secondOutput=hello again" >> "$GITHUB_OUTPUT"
 
 
   use_saved_output:
@@ -32,7 +32,7 @@ jobs:
     needs: save_output
     steps:
       - env:
-          OUTPUT: ${{needs.save_output.outputs.output}}
+          OUTPUT: ${{needs.save_output.outputs.output.test.secondOutput}}
         run: echo "$OUTPUT"
 
 
