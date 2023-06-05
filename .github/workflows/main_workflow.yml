@@ -18,13 +18,14 @@ jobs:
 
   save_output:
     runs-on: ubuntu-latest
-    outputs:
+    outputs: #declaring output(s) for specific job
       output: ${{ steps.step1.outputs.test }}
     steps:
       - name: step 1
         id: step1
+        # {name}={value} >> "$GITHUB_OUTPUT"
         run: |
-          echo "test=hello" >> "$GITHUB_OUTPUT"
+          echo "test=hello" >> "$GITHUB_OUTPUT" 
       - name: step 2
         id: step2
         run: echo "${{steps.step1.outputs.test}}"
@@ -36,6 +37,8 @@ jobs:
     steps:
       - env:
           OUTPUT: ${{needs.save_output.outputs.output}}
+        id: step3
+        if: ${{needs.save_output.result=='success'}}
         run: echo "$OUTPUT"
 
 
