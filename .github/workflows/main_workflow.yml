@@ -19,12 +19,12 @@ jobs:
   save_output:
     runs-on: ubuntu-latest
     outputs:
-      output: ${{ steps.step.outputs.test }}
+      output: ${{ steps.step.outputs.test.secondOutput }}
     steps:
       - id: step
         run: |
           echo "test=hello" >> "$GITHUB_OUTPUT"
-          echo "test.secondOutput=hello again" >> "$GITHUB_OUTPUT"
+          echo "test.secondOutput=hello again" >> "$GITHUB_OUTPUT2"
 
 
   use_saved_output:
@@ -32,7 +32,7 @@ jobs:
     needs: save_output
     steps:
       - env:
-          OUTPUT: ${{needs.save_output.outputs.output.test}}
+          OUTPUT: ${{needs.save_output.outputs.output}}
         run: echo "$OUTPUT"
 
 
