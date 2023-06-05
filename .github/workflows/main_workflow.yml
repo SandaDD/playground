@@ -37,8 +37,9 @@ jobs:
     steps:
       - env:
           OUTPUT: ${{needs.save_output.outputs.output}}
+          RESULT: ${{needs.save_output.result}}
         id: step3
-        if: ${{needs.save_output.result=='success'}}
+        if: ${{steps.env.RESULT=='success'}}
         run: echo "$OUTPUT"
 
 
