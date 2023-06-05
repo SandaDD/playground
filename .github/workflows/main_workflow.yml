@@ -22,7 +22,10 @@ jobs:
       output: ${{ steps.step.outputs.test }}
     steps:
       - id: step
-        run: echo "test=hello" >> "$GITHUB_OUTPUT"
+        run: |
+          echo "test=hello" >> "$GITHUB_OUTPUT"
+          echo "test.seoncdOutput=hello again" >> "$GITHUB_OUTPUT"
+
 
   use_saved_output:
     runs-on: ubuntu-latest
