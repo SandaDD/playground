@@ -86,4 +86,12 @@ jobs:
   reusable_workflow:
     needs: [build, login]
     uses: ./.github/workflows/reusable_workflow.yml
+    with: 
+      name: Hello
+    secrets:
+      username: ${{ secrets.DOCKERHUB_USERNAME }}
+      token: ${{ secrets.DOCKERHUB_TOKEN }}
+
+
+ 
           

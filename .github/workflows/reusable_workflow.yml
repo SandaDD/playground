@@ -1,5 +1,16 @@
 on:
-  workflow_call
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        type: string
+    secrets:
+      username:
+        required: true
+      token:
+        required: true
+
+
   
 jobs:
   welcome:
@@ -7,5 +18,8 @@ jobs:
     steps:
       - 
         name: Welcome message
-        run: echo Welcome to reusable workflow!
+        run: |
+          echo Welcome to reusable workflow!
+          echo ${{ inputs.name }}
+          echo ${{ secrets.token}}
         
