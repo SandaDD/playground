@@ -47,7 +47,16 @@ jobs:
           OUTPUT2: ${{steps.step3.outputs.message}}
         run: echo "$OUTPUT2"
 
-        
+  example_matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        who-to-greet: [Ivo, Pero, Miško]
+    steps:
+      - uses: actions/hello-world-javascript-action@main
+        with:
+          who-to-greet: ${{ matrix.who-to-greet}}
+
 
 
   test_new_env:
