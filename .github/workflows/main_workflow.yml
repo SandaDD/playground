@@ -61,13 +61,8 @@ jobs:
           who-to-greet: ${{ matrix.who-to-greet}}
       - name: Output matrix
         id: step5
-        run: echo "matrix=$matrix" >> $GITHUB_OUTPUT
+        run: echo "matrix=${{ toJSON(matrix.who-to-greet)}}" >> $GITHUB_OUTPUT
         
-
-
-          
-
-
 
   test_new_env:
     needs: example_matrix
