@@ -70,6 +70,7 @@ jobs:
         run: | 
           echo "$GITHUB_CONTEXT"
           echo "$ENV_VAR"
+          echo "${{jobs.example_matrix.strategy.matrix.who-to-greet}}"
 
   login:
     runs-on: ubuntu-latest
