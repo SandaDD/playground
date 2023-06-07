@@ -49,13 +49,23 @@ jobs:
 
   example_matrix:
     runs-on: ubuntu-latest
+    outputs:
+      output: ${{steps.step5.outputs.matrix}}
     strategy:
       matrix:
         who-to-greet: [Ivo, Pero, Miško]
     steps:
       - uses: actions/hello-world-javascript-action@main
+        id: step4
         with:
           who-to-greet: ${{ matrix.who-to-greet}}
+      - name: Output matrix
+        id: step5
+        run: echo "matrix=$matrix" >> $GITHUB_OUTPUT
+        
+
+
+          
 
 
 
@@ -64,7 +74,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev-env
     env:
-      NAMES: ${{ toJSON(needs.example_matrix.result.strategy.matrix.who-to-greet)}}
+      NAMES: ${{ toJSON(needs.example_matrix.outputs.output)}}
     steps:
       - name: echo env variable name and context values
         env: 
