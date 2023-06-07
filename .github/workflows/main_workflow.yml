@@ -42,7 +42,6 @@ jobs:
         run: |
           echo "$OUTPUT $RESULT"
           echo "message=Input for the next step" >> $GITHUB_OUTPUT
-
       - name: Use value from the previous step
         env:
           OUTPUT2: ${{steps.step3.outputs.message}}
