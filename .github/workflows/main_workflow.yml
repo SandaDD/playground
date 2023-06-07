@@ -60,8 +60,11 @@ jobs:
 
 
   test_new_env:
+    needs: example_matrix
     runs-on: ubuntu-latest
     environment: dev-env
+    env:
+      NAMES: ${{ toJSON(needs.example_matrix.outputs)}}
     steps:
       - name: echo env variable name and context values
         env: 
@@ -70,7 +73,7 @@ jobs:
         run: | 
           echo "$GITHUB_CONTEXT"
           echo "$ENV_VAR"
-          echo "${{jobs.example_matrix.strategy.matrix.who-to-greet}}"
+      
 
   login:
     runs-on: ubuntu-latest
