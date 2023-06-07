@@ -35,7 +35,7 @@ jobs:
       RESULT: ${{needs.job1.result}}
       OUTPUT: ${{needs.job1.outputs.output}}
     steps:
-      - name: Use output vale from job1
+      - name: Use output value from job1
         id: step3 # <- step ID
         #Possible values are success, failure, cancelled, or skipped.
         if: ${{env.RESULT=='success'}} 
