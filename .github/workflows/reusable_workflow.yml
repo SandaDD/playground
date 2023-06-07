@@ -9,8 +9,6 @@ on:
         required: true
       token:
         required: true
-
-
   
 jobs:
   welcome:
