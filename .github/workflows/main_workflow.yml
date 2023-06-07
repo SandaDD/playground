@@ -73,6 +73,7 @@ jobs:
         run: | 
           echo "$GITHUB_CONTEXT"
           echo "$ENV_VAR"
+          echo "$NAMES"
       
 
   login:
