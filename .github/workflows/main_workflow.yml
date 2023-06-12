@@ -119,7 +119,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print out github context
-        run: echo "${{ toJSON(env)}}"
+        run: echo "${{ toJSON(job)}}"
 
 
 
