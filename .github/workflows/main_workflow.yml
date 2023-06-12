@@ -37,8 +37,8 @@ jobs:
     steps:
       - name: Use output value from job1
         id: step3 # <- step ID
-        #Possible values are success, failure, cancelled, or skipped.
-        if: ${{env.RESULT=='success'}} 
+        #Possible values are success, failure, cancelled, or skipped. Also GitHub automatically evaluates the if conditional as an expression .
+        if: env.RESULT=='success' 
         run: |
           echo "$OUTPUT $RESULT"
           echo "message=Input for the next step" >> $GITHUB_OUTPUT
@@ -61,7 +61,7 @@ jobs:
           who-to-greet: ${{ matrix.who-to-greet}}
       - name: Output matrix
         id: step5
-        run: echo "matrix=${{ toJSON(matrix.who-to-greet)}}" >> $GITHUB_OUTPUT
+        run: echo "matrix=${{ (matrix.who-to-greet)}}" >> $GITHUB_OUTPUT
         
 
   test_new_env:
