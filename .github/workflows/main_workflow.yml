@@ -73,7 +73,6 @@ jobs:
     steps:
       - name: echo env variable name and context values
         env: 
-          GITHUB_CONTEXT: ${{ (github) }}
           ENV_VAR: ${{ (vars.DUMMY_VALUE) }}
         run: | 
           echo "$ENV_VAR"
