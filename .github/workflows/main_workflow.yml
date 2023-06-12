@@ -69,12 +69,12 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev-env
     env:
-      NAMES: ${{ toJSON(needs.example_matrix.outputs.output)}}
+      NAMES: ${{ (needs.example_matrix.outputs.output)}}
     steps:
       - name: echo env variable name and context values
         env: 
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
-          ENV_VAR: ${{ toJSON(vars.DUMMY_VALUE) }}
+          GITHUB_CONTEXT: ${{ (github) }}
+          ENV_VAR: ${{ (vars.DUMMY_VALUE) }}
         run: | 
           echo "$ENV_VAR"
           echo "$NAMES"
