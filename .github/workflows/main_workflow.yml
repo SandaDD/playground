@@ -115,10 +115,10 @@ jobs:
       username: ${{ secrets.DOCKERHUB_USERNAME }}
       token: ${{ secrets.DOCKERHUB_TOKEN }}
 
-  print_out_github_context:
+  print_out_job_context:
     runs-on: ubuntu-latest
     steps:
-      - name: Print out github context
+      - name: Print out job context
         run: echo "${{ job}}"
 
 
