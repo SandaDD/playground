@@ -69,7 +69,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev-env
     env:
-      NAMES: ${{ (needs.example_matrix.outputs.output)}}
+      NAMES: ${{ toJSON(needs.example_matrix.outputs.output)}}
     steps:
       - name: echo env variable name and context values
         env: 
