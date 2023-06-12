@@ -115,6 +115,14 @@ jobs:
       username: ${{ secrets.DOCKERHUB_USERNAME }}
       token: ${{ secrets.DOCKERHUB_TOKEN }}
 
+  print_out_github_context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print out github context
+        run: echo "${{ (github)}}"
+
+
+
 
  
           
