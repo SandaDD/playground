@@ -127,7 +127,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        labels: [label1, label2]
+        labels: [label1,label2]
     outputs:
       labels: ${{ steps.set-up-labels.outputs.labels_for_the_next_job }}
     steps:
