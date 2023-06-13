@@ -143,8 +143,8 @@ jobs:
     steps:
       - name: Print out labels as a list
         run: |
-          echo ${{ fromJSON(needs.generate_labels.outputs.labels) }}
-          echo ${{ (needs.generate_labels.outputs.labels) }}
+          echo "${{ fromJSON(needs.generate_labels.outputs.labels) }}"
+          echo "${{ (needs.generate_labels.outputs.labels) }}"
           
  
           
