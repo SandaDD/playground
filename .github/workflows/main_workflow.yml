@@ -142,9 +142,8 @@ jobs:
     needs: generate_labels
     steps:
       - name: Print out labels as a list
-        run: |
-          echo "${{ fromJSON(needs.generate_labels.outputs.labels) }}"
-          echo "${{ (needs.generate_labels.outputs.labels) }}"
+        run: echo "${{fromJSON(needs.generate_labels.outputs.labels)}}"
+
           
  
           
