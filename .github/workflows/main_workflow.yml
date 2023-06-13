@@ -131,12 +131,12 @@ jobs:
         - name: Set up label list
           id: set-up-labels
           run: |
-            echo "labels_for_the_next_job={label1,label2}" >> $GITHUB_OUTPUT
+            echo "labels_for_the_next_job=[label1,label2]" >> $GITHUB_OUTPUT
         - name: convert to JSON
           id: toJSON
           run: |
             echo "labels_for_the_next_job_JSON=${{toJSON(steps.set-up-labels.outputs.labels_for_the_next_job)}}" >> $GITHUB_OUTPUT
-            echo  "${{toJSON(steps.set-up-labels.outputs.labels_for_the_next_job)}}"
+            echo  "${{toJSON(steps.set-up-labels.outputs)}}"
 
   consume_labels:
     name: Use labels from previous job
