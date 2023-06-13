@@ -126,7 +126,7 @@ jobs:
     name: Generate  labels
     runs-on: ubuntu-latest
     outputs:
-      labels: ${{ steps.set-up-labels.outputs.labels_for_the_next_job_JSON }}
+      labels: ${{ steps.set-up-labels.outputs }}
     steps:
         - name: Set up label list
           id: set-up-labels
