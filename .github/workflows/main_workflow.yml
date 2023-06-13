@@ -131,7 +131,7 @@ jobs:
         - name: Set up label list
           id: set-up-labels
           run: |
-            echo "labels_for_the_next_job={label1,label2}" >> $GITHUB_OUTPUT
+            echo "labels_for_the_next_job=[label1,label2]" >> $GITHUB_OUTPUT
 
   consume_labels:
     name: Use labels from previous job
@@ -139,7 +139,7 @@ jobs:
     needs: generate_labels
     steps:
       - name: Print out labels as a list
-        run: echo "${{(needs.generate_labels.outputs.labels)}}"
+        run: echo "${{fromJSON(needs.generate_labels.outputs.labels)}}"
 
           
  
