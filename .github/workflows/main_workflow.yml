@@ -135,7 +135,6 @@ jobs:
         - name: convert to JSON
           id: toJSON
           run: |
-            echo "labels_for_the_next_job_JSON=${{toJSON(steps.set-up-labels.outputs.labels_for_the_next_job)}}" >> $GITHUB_OUTPUT
             echo  "${{toJSON(steps.set-up-labels.outputs)}}"
 
   consume_labels:
