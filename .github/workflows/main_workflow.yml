@@ -122,7 +122,29 @@ jobs:
         run: echo "${{ toJSON(job)}}"
 
 
+  generate_labels:
+    name: Generate  labels
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        labels: [label1, label2]
+    outputs:
+      labels: ${{ steps.set-up-labels.outputs.labels_for_the_next_job }}
+    steps:
+        - name: Set up label list
+          id: set-up-labels
+          run: |
+            echo "labels_for_the_next_job=${{matrix.labels}}" >> $GITHUB_OUTPUT
 
-
+  consume_labels:
+    name: Use labels from previous job
+    runs-on: ubuntu-latest
+    needs: generate_labels
+    steps:
+      - name: Print out labels as a list
+        run: |
+          echo ${{ fromJSON(needs.generate_labels.outputs.labels) }}
+          echo ${{ (needs.generate_labels.outputs.labels) }}
+          
  
           
