@@ -127,14 +127,12 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       labels: ${{ steps.set-up-labels.outputs.labels_for_the_next_job }}
+    env:
+      LABELS: "ubuntu-lates, test"
     steps:
         - name: Set up label list
           id: set-up-labels
-          run: |
-            $labels_string = self-hosted, test
-            $labels_array = @($labels_string -split ',\s*' | ForEach-Object { "$_" })
-            $labels_json = ConvertTo-Json $labels_array -Compress -Depth 100 | Out-String
-            echo "labels_for_the_next_job=$labels_json" >> $GITHUB_OUTPUT
+          run: echo "labels_for_the_next_job=self-hosted, test" >> $GITHUB_OUTPUT
 
 
   consume_labels:
@@ -144,10 +142,13 @@ jobs:
     steps:
       - name: Print out labels as a list
         run: |
+          echo '${{fromJSON(toJSON(needs.generate_labels.outputs.labels))}}'
           echo "${{fromJSON(toJSON(needs.generate_labels.outputs.labels))}}"
+          echo '${{fromJSON(toJSON(needs.generate_labels.outputs)).labels}}'
           echo "${{fromJSON(toJSON(needs.generate_labels.outputs)).labels}}"
           echo "${{needs.generate_labels.outputs.labels}}"
           echo "${{toJSON(needs.generate_labels.outputs.labels)}}"
+          echo '${{toJSON(needs.generate_labels.outputs.labels)}}'
           echo "${{toJSON(needs.generate_labels.outputs)}}"
 
     
