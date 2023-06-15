@@ -136,13 +136,14 @@ jobs:
 
   consume_labels:
     name: Use labels from previous job
-    runs-on: ${{toJSON(needs.generate_labels.outputs.labels)}}
+    runs-on: self-hosted
     needs: generate_labels
     steps:
       - name: Print out labels as a list
         run: |
           echo "${{fromJSON(toJSON(needs.generate_labels.outputs)).labels}}"
           echo "${{needs.generate_labels.outputs.labels}}"
+          echo "${{toJSON(needs.generate_labels.outputs.labels)}}"
 
     
  
