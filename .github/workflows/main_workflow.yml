@@ -136,7 +136,7 @@ jobs:
 
   consume_labels:
     name: Use labels from previous job
-    runs-on: ${{needs.generate_labels.outputs.labels}}
+    runs-on: ${{fromJSON(toJSON(needs.generate_labels.outputs)).labels}}
     needs: generate_labels
     steps:
       - name: Print out labels as a list
