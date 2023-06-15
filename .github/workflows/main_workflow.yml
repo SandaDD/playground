@@ -126,7 +126,7 @@ jobs:
     name: Generate  labels
     runs-on: ubuntu-latest
     outputs:
-      labels: ${{ steps.set-up-labels.outputs.labels_for_the_next_job }}
+      labels: ${{ steps.toJSON.outputs.labels_for_the_next_job_JSON }}
     steps:
         - name: Set up label list
           id: set-up-labels
@@ -135,7 +135,7 @@ jobs:
         - name: convert to JSON
           id: toJSON
           run: |
-            echo  "${{toJSON(steps.set-up-labels.outputs)}}"
+            echo  "labels_for_the_next_job_JSON=${{toJSON(steps.set-up-labels.outputs)}}">> $GITHUB_OUTPUT
 
   consume_labels:
     name: Use labels from previous job
