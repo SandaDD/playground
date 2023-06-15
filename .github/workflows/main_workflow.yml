@@ -139,6 +139,8 @@ jobs:
     name: Use labels from previous job
     runs-on: ubuntu-latest
     needs: generate_labels
+    env: 
+      lab: '${{toJSON(needs.generate_labels.outputs)}}'
     steps:
       - name: Print out labels as a list
         run: |
@@ -151,6 +153,10 @@ jobs:
           echo '${{toJSON(needs.generate_labels.outputs.labels)}}'
           echo "${{toJSON(needs.generate_labels.outputs)}}"
           echo '${{toJSON(needs.generate_labels.outputs)}}'
+          echo '${{fromJSON(env.lab.labels)}}'
+          echo "${{fromJSON(env.lab.labels)}}"
+          echo "${{fromJSON(env.lab).labels}}"
+          echo '${{fromJSON(env.lab).labels}}'
 
     
  
