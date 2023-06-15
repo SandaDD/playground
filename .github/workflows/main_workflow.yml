@@ -144,10 +144,11 @@ jobs:
     steps:
       - name: Print out labels as a list
         run: |
-          echo '${{fromJSON(env.lab.labels)}}'
-          echo "${{fromJSON(env.lab.labels)}}"
-          echo "${{fromJSON(env.lab).labels}}"
-          echo '${{fromJSON(env.lab).labels}}'
+          echo "${{fromJSON(toJSON(needs.generate_labels.outputs.labels))}}"
+          echo '${{fromJSON(toJSON(needs.generate_labels.outputs)).labels}}'
+          echo "${{fromJSON(toJSON(needs.generate_labels.outputs)).labels}}"
+          echo "${{needs.generate_labels.outputs.labels}}"
+  
 
     
  
