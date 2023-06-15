@@ -144,7 +144,6 @@ jobs:
     steps:
       - name: Print out labels as a list
         run: |
-          echo '${{fromJSON(toJSON(needs.generate_labels.outputs.labels))}}'
           echo "${{fromJSON(toJSON(needs.generate_labels.outputs.labels))}}"
           echo '${{fromJSON(toJSON(needs.generate_labels.outputs)).labels}}'
           echo "${{fromJSON(toJSON(needs.generate_labels.outputs)).labels}}"
