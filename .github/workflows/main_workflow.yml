@@ -136,11 +136,13 @@ jobs:
 
   consume_labels:
     name: Use labels from previous job
-    runs-on: ${{fromJSON(toJSON(needs.generate_labels.outputs)).labels}}
+    runs-on: ubuntu-latest
     needs: generate_labels
     steps:
       - name: Print out labels as a list
-        run: echo "${{fromJSON(toJSON(needs.generate_labels.outputs)).labels}}"
+        run: |
+          echo "${{fromJSON(toJSON(needs.generate_labels.outputs)).labels}}"
+          echo "${{needs.generate_labels.outputs.labels}}"
 
-          
+    
  
