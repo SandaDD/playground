@@ -126,12 +126,12 @@ jobs:
     name: Generate  labels
     runs-on: ubuntu-latest
     outputs:
-      labels: ${{ steps.set-up-labels.outputs }}
+      labels: ${{ steps.set-up-labels.outputs.labels_for_the_next_job }}
     steps:
         - name: Set up label list
           id: set-up-labels
           run: |
-            echo "labels_for_the_next_job=label1, label2" >> $GITHUB_OUTPUT
+            echo "labels_for_the_next_job=label1,label2" >> $GITHUB_OUTPUT
         - name: convert to JSON
           id: toJSON
           run: |
