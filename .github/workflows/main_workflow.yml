@@ -140,10 +140,12 @@ jobs:
     needs: generate_labels
     steps:
       - name: Create list from array of strings
+        id: arrytolist
         uses: lucaspinheirogit/list-from-string-array-action@v1.4.3
         with:
           stringArray: '["self-hosted","test"]'
-
+      - name: Print modified files
+        run: echo '${{ steps.arrytolist.outputs.stringList }}'
       - name: Print out labels as a list
         env: 
           lab: '${{toJSON(needs.generate_labels.outputs.labels)}}'
@@ -156,22 +158,7 @@ jobs:
           echo "$lab"
           echo '$lab'
   
-  deploy:
-            runs-on: ubuntu-latest
-            steps:
-            - uses: actions/checkout@v2
-            - name: Get modified files
-              id: modified_files
-              uses: trilom/file-changes-action@v1.0.0
-              with:
-                githubToken: ${{ secrets.GITHUB_TOKEN }}
-            - name: Create list of modified files
-              id: modified_files_list
-              uses: lucaspinheirogit/list-from-string-array-action@v1.4.3
-              with:
-                stringArray: ${{ steps.modified_files.outputs.files_modified }}
-            - name: Print modified files
-              run: echo '${{ steps.modified_files_list.outputs.stringList }}'
+
 
     
  
