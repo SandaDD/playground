@@ -147,8 +147,9 @@ jobs:
           echo '${{fromJSON(toJSON(needs.generate_labels.outputs)).labels}}'
           echo "${{fromJSON(toJSON(needs.generate_labels.outputs)).labels}}"
           echo "${{needs.generate_labels.outputs.labels}}"
-          echo '${{toJSON(needs.generate_labels.outputs.labels)}}'
+          echo "${{toJSON(needs.generate_labels.outputs.labels)}}"
           echo "$lab"
+          echo '$lab'
   
 
     
