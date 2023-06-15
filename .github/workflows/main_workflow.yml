@@ -131,7 +131,7 @@ jobs:
         - name: Set up label list
           id: set-up-labels
           run: |
-            echo "labels_for_the_next_job=ubuntu-latest, x64" >> $GITHUB_OUTPUT
+            echo "labels_for_the_next_job=self-hosted, x64" >> $GITHUB_OUTPUT
 
 
   consume_labels:
