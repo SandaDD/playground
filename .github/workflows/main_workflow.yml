@@ -134,7 +134,6 @@ jobs:
           id: set-up-labels
           run: echo "labels_for_the_next_job=self-hosted, test" >> $GITHUB_OUTPUT
 
-
   consume_labels:
     name: Use labels from previous job
     runs-on: ubuntu-latest
@@ -148,7 +147,7 @@ jobs:
           echo '${{fromJSON(toJSON(needs.generate_labels.outputs)).labels}}'
           echo "${{fromJSON(toJSON(needs.generate_labels.outputs)).labels}}"
           echo "${{needs.generate_labels.outputs.labels}}"
-          echo '${{toJSON(needs.generate_labels.outputs)}}'
+          echo "${{fromJSON(env.lab.lates)}}"
   
 
     
