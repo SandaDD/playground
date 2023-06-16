@@ -10,14 +10,13 @@ on:
 
   
 jobs:
-  run-on-extracted-labels:
+  extracted-labels:
     runs-on: ubuntu-latest
     outputs:
-      array:  ${{ steps.extractLabels.outputs.labels }}
-    env:
       JSON_DOC: ${{toJson(inputs)}}
     steps:
       - name: Welcome message
+        id: JSON
         run: |
           printf '%s\n' "$JSON_DOC" > foo.json
           cat foo.json
@@ -27,9 +26,11 @@ jobs:
         run: |
           echo "labels=${{(inputs.labels)}}" >> $GITHUB_OUTPUT
           echo "$JSON_DOC" 
-          echo "${{fromJson(env.JSON_DOC).labels}}" 
+          echo "${{fromJson(steps.JSON.outputs).labels}}" 
           echo "$GITHUB_OUTPUT"
 
-  
+  run-on-extracted-labels:
+    needs: extracted-labels
+    runs-on: ${{fromJson(needs.extracted-labels.outputs.JSON_DOC).labels}}
 
         
