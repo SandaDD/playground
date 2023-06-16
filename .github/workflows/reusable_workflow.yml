@@ -30,7 +30,7 @@ jobs:
 
   run-on-extracted-labels:
     needs: extracted-labels
-    runs-on: ${{fromJson(needs.extracted-labels.outputs.json).labels}}
+    runs-on: ${{fromJson(needs.extracted-labels.outputs.json.labels)}}
     steps:
       - name: finally
         run: |
