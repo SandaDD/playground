@@ -36,5 +36,5 @@ jobs:
       - name: Print labels
         run: |
           echo ${{(needs.welcome.outputs.array)}}
-          echo ${{(needs.welcome.outputs.array)}}
+          echo ${{fromJson(needs.welcome.outputs.array)}}
         
