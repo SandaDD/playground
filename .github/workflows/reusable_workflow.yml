@@ -32,5 +32,9 @@ jobs:
   run-on-extracted-labels:
     needs: extracted-labels
     runs-on: ${{fromJson(needs.extracted-labels.outputs.JSON_DOC).labels}}
+    steps:
+      - name: finally
+        run: |
+          echo "success"
 
         
