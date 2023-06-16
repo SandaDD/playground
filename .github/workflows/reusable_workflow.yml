@@ -11,7 +11,7 @@ on:
   
 jobs:
   run-on-extracted-labels:
-    runs-on: "${{fromJson(toJson(inputs.labels))}}" 
+    runs-on: ${{fromJson(toJson(inputs.labels))}}
     outputs:
       array:  ${{ steps.extractLabels.outputs.labels }}
     steps:
