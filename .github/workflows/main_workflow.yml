@@ -31,8 +31,6 @@ jobs:
         id: step2
         run: echo ${{ steps.step1.outputs.test2 }}
 
-
-
   job2:
     runs-on: ubuntu-latest
     needs: job1
