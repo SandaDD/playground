@@ -23,7 +23,7 @@ jobs:
       - name: extract labels
         id: extractLabels
         run: |
-          echo "labels=${{toJson(inputs.labels)}}" >> $GITHUB_OUTPUT
+          echo "labels=${{(inputs.labels)}}" >> $GITHUB_OUTPUT
           echo "${{toJson(inputs.labels)}}" 
           echo "${{toJson(inputs)}}" 
           echo "${{fromJson(toJson(inputs.labels))}}" 
