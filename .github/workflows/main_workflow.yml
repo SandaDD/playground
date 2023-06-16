@@ -42,7 +42,8 @@ jobs:
     steps:
       - name: Use output value from job1
         id: step3 # <- step ID
-        #Possible values are success, failure, cancelled, or skipped. Also GitHub automatically evaluates the if conditional as an expression .
+        # Possible values are success, failure, cancelled, or skipped. 
+        # Also GitHub automatically evaluates the if conditional as an expression .
         if: env.RESULT=='success' 
         run: |
           echo "$OUTPUT $RESULT"
