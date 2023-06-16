@@ -27,7 +27,7 @@ jobs:
         id: extractLabels
         run: |
           echo "$JSON_DOC"
-          echo "${{fromJson(env.JSON_DOC.labels)}}"
+          echo "${{fromJson(env.JSON_DOC)}}"
 
   run-on-extracted-labels:
     needs: extracted-labels
