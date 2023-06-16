@@ -31,7 +31,7 @@ jobs:
   
   run-on-extracted-labels:
     needs: welcome
-    runs-on: ${{fromJson(needs.welcome.outputs.array.labels)}}
+    runs-on: ubuntu-latest
     steps:
       - name: Print labels
         run: |
