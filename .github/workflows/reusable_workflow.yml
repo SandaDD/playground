@@ -34,6 +34,6 @@ jobs:
     steps:
       - name: finally
         run: |
-          echo "${{toJson(needs.extracted-labels.outputs.json)}}"
+          echo "${{fromJson(toJson(needs.extracted-labels.outputs.json).labels)}}"
 
         
