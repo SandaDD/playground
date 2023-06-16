@@ -4,20 +4,31 @@ on:
       name:
         required: true
         type: string
-    secrets:
-      username:
+      labels:
         required: true
-      token:
-        required: true
+        type: string
+
   
 jobs:
   welcome:
     runs-on: ubuntu-latest
+    outputs:
+      array:  ${{ steps.extractLabels.outputs.labels }}
     steps:
-      - 
-        name: Welcome message
+      - name: Welcome message
         run: |
           echo Welcome to reusable workflow!
           echo ${{ inputs.name }}
-          echo ${{ secrets.token}}
+
+      - name: extract labels
+        id: extractLabels
+        run: echo "labels=${{ inputs.labels }}" >> $GITHUB_OUTPUT
+  
+  run-on-extracted-labels:
+    needs: welcome
+    runs-on: ${{fromJson(needs.welcome.outputs.array)}}
+    steps:
+      - name: Print labels
+        run: |
+          echo ${{fromJson(needs.welcome.outputs.array)}}
         
