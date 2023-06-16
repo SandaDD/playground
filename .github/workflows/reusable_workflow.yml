@@ -15,7 +15,7 @@ jobs:
     env:
       JSON_DOC: ${{toJson(inputs)}}
     outputs:
-      json: ${{steps.JSON.outputs.JSON_DOC}}
+      json: ${{env.JSON_DOC}}
     steps:
       - name: Welcome message
         id: JSON
