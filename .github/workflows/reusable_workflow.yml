@@ -10,8 +10,8 @@ on:
 
   
 jobs:
-  welcome:
-    runs-on: ubuntu-latest
+  run-on-extracted-labels:
+    runs-on: "${{fromJson(toJson(inputs.labels))}}" 
     outputs:
       array:  ${{ steps.extractLabels.outputs.labels }}
     steps:
@@ -30,12 +30,5 @@ jobs:
           echo "$GITHUB_OUTPUT"
 
   
-  run-on-extracted-labels:
-    needs: welcome
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print labels
-        run: |
-          echo ${{(needs.welcome.outputs.array)}}
-          echo ${{fromJson(needs.welcome.outputs.array.labels)}}
+
         
