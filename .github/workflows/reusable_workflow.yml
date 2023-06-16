@@ -26,10 +26,7 @@ jobs:
       - name: extract labels
         id: extractLabels
         run: |
-          echo "labels=$JSON_DOC" >> $GITHUB_OUTPUT
           echo "$JSON_DOC" 
-          echo "${{fromJson(steps.JSON.outputs).labels}}" 
-          echo "$GITHUB_OUTPUT"
 
   run-on-extracted-labels:
     needs: extracted-labels
