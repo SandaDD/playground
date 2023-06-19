@@ -40,6 +40,9 @@ jobs:
           echo "$labels_json"
         shell: powershell
 
+      - name: test output
+        run: echo "${{ steps.labels_json.outputs.labels}}"
+
   run-on-extracted-labels:
     needs: extracted-labels
     runs-on: ${{ fromJson(needs.extracted-labels.outputs.labels) }}
