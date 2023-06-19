@@ -11,7 +11,7 @@ on:
   
 jobs:
   extracted-labels:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     env:
       JSON_DOC: ${{toJson(inputs)}}
     outputs:
@@ -41,7 +41,7 @@ jobs:
         #shell: powershell
 
       - name: test output
-        run: echo "${{ (steps.labels_json.outputs.json)}}"
+        run: echo "${{ (steps.labels_json.outputs.labels)}}"
 
   run-on-extracted-labels:
     needs: extracted-labels
