@@ -41,7 +41,7 @@ jobs:
         #shell: powershell
 
       - name: test output
-        run: echo "${{ steps.labels_json.outputs}}"
+        run: echo "${{ toJson(steps.labels_json.outputs)}}"
 
   run-on-extracted-labels:
     needs: extracted-labels
