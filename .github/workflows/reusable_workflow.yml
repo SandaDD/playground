@@ -38,7 +38,7 @@ jobs:
           $labels_json = ConvertTo-Json $labels_array -Compress -Depth 100 | Out-String
           Write-Output "::set-output name=labels::$labels_json"
           echo "$labels_json"
-        #shell: powershell
+        shell: powershell
 
       - name: test output
         run: echo "${{ toJson(steps.labels_json.outputs)}}"
