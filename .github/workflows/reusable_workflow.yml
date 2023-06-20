@@ -44,7 +44,7 @@ jobs:
 
   run-on-extracted-labels:
     needs: extracted-labels
-    runs-on: ${{ fromJson(needs.extracted-labels.outputs.labels) }}
+    runs-on: ${{ inputs.labels }}
     steps:
       - name: finally
         run: |
