@@ -130,7 +130,7 @@ jobs:
     outputs:
       labels: ${{ steps.set-up-labels.outputs.labels_for_the_next_job }}
     env:
-      LABELS: "ubuntu-lates, test"
+      LABELS: "ubuntu-latest, test"
     steps:
         - name: Set up label list
           id: set-up-labels
