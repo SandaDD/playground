@@ -33,10 +33,8 @@ jobs:
       - name: convert to JSON
         id: labels_json 
         run: |
-          $labels_string = "${{ inputs.labels }}"
-          $labels_array = @($labels_string -split ',\s*' | ForEach-Object { "$_" })
-          $labels_json = ConvertTo-Json $labels_array -Compress -Depth 100 | Out-String
-          echo "labels=$labels_json" >> $ENV:GITHUB_OUTPUT
+          $labels_string = "${{ toJson(inputs.labels) }}"
+          echo "labels=$labels_string" >> $ENV:GITHUB_OUTPUT
         shell: powershell
 
       - name: test output
