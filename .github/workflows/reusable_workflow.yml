@@ -36,15 +36,15 @@ jobs:
           $labels_string = "${{ inputs.labels }}"
           $labels_array = @($labels_string -split ',\s*')
           $labels_json = ConvertTo-Json $labels_array -Compress -Depth 100 | Out-String
-          echo "labels=$labels_json" >> $ENV:GITHUB_OUTPUT
+          echo "labels={\"include\":[{\"label\":\"test\",\"self-hosted\"},{\"project\":\"bar\",\"config\":\"Release\"}]}" >> $ENV:GITHUB_OUTPUT
         shell: powershell
 
       - name: test output
-        run: echo "${{ (steps.labels_json.outputs.labels)}}"
+        run: echo "${{ fromJson(steps.labels_json.outputs.labels)}}"
 
   run-on-extracted-labels:
     needs: extracted-labels
-    runs-on: ${{ inputs.labels }}
+    runs-on: ${{ fromJson(needs.extracted-labels.outputs.labels) }}
     steps:
       - name: finally
         run: |
