@@ -27,7 +27,6 @@ jobs:
       - name: extract labels
         id: extractLabels
         run: |
-          echo "$JSON_DOC"
           echo "${{fromJson(env.JSON_DOC)}}"
 
       - name: convert to JSON
@@ -36,7 +35,7 @@ jobs:
           $labels_string = "${{ inputs.labels }}"
           $labels_array = @($labels_string -split ',\s*' | ForEach-Object { "$_" })
           $labels_json = ConvertTo-Json $labels_array -Compress -Depth 100 | Out-String
-          echo "labels={\"include\":[{\"label\":\"test\",\"self-hosted\"},{\"project\":\"bar\",\"config\":\"Release\"}]}" >> $ENV:GITHUB_OUTPUT
+          echo "labels=$labels_json" >> $ENV:GITHUB_OUTPUT
         shell: powershell
 
       - name: test output
