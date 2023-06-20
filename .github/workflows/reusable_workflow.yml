@@ -33,6 +33,7 @@ jobs:
       - name: convert to JSON
         id: labels_json 
         run: |
+          $labels_string = "${{ inputs.labels }}"
           echo "labels=$labels_string" >> $ENV:GITHUB_OUTPUT
         shell: powershell
 
