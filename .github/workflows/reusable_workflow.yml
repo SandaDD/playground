@@ -34,6 +34,8 @@ jobs:
         id: labels_json 
         run: |
           $labels_string = "${{ inputs.labels }}"
+          $labels_array = @($labels_string -split ',' | ForEach-Object { "$_" })
+          $labels_json = ConvertTo-Json $labels_array -Compress -Depth 100 | Out-String
           echo "labels=$labels_string" >> $ENV:GITHUB_OUTPUT
         shell: powershell
 
