@@ -1,9 +1,6 @@
 on:
   workflow_call:
     inputs:
-      name:
-        required: true
-        type: string
       label1:
         required: true
         type: string
@@ -16,10 +13,11 @@ jobs:
   extracted-labels:
     runs-on: windows-latest
     env:
-      JSON_DOC: ${{ inputs.name}}
+      JSON_DOC: ${{ inputs.label1}}
     outputs:
       json: ${{env.JSON_DOC}}
       labels: ${{ steps.labels_json.outputs.labels }}
+      test: ("test" "self-hosted")
     steps:
       - name: Welcome message
         id: JSON
@@ -41,12 +39,10 @@ jobs:
 
   run-on-extracted-labels:
     needs: extracted-labels
-    runs-on: ["${{ inputs.label1 }}", "${{ inputs.label2 }}"]
+    runs-on: ["${{ needs.extracted-labels.outputs.test }}"]
     steps:
       - name: finally
         run: |
           echo "success"
           echo "${{ fromJson(needs.extracted-labels.outputs.labels) }}"
-
-
-        
+   
