@@ -115,7 +115,8 @@ jobs:
     uses: ./.github/workflows/reusable_workflow.yml
     with: 
       name: "Hello"
-      labels: "test,self-hosted" 
+      label1: test
+      label2: self-hosted
 
   print_out_job_context:
     runs-on: ubuntu-latest

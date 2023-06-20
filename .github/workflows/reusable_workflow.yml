@@ -4,7 +4,10 @@ on:
       name:
         required: true
         type: string
-      labels:
+      label1:
+        required: true
+        type: string
+      label2:
         required: true
         type: string
 
@@ -13,7 +16,7 @@ jobs:
   extracted-labels:
     runs-on: windows-latest
     env:
-      JSON_DOC: ${{ inputs.labels }}
+      JSON_DOC: ${{ inputs}}
     outputs:
       json: ${{env.JSON_DOC}}
       labels: ${{ steps.labels_json.outputs.labels }}
@@ -24,16 +27,10 @@ jobs:
           printf '%s\n' "$JSON_DOC" > foo.json
           cat foo.json
 
-      - name: extract labels
-        id: extractLabels
-        run: |
-          echo "${{env.JSON_DOC.labels}}"
-          echo "${{fromJson(env.JSON_DOC.labels)}}"
-
       - name: convert to JSON
         id: labels_json 
         run: |
-          $labels_string = "${{ inputs.labels }}"
+          $labels_string = "${{ inputs.label1 }}"
           $labels_array = @($labels_string -split ',\s*' | ForEach-Object { "$_" })
           $labels_json = ConvertTo-Json $labels_array -Compress -Depth 100 | Out-String
           echo "labels=$labels_json" >> $ENV:GITHUB_OUTPUT
@@ -44,7 +41,7 @@ jobs:
 
   run-on-extracted-labels:
     needs: extracted-labels
-    runs-on: ${{ fromJson(needs.extracted-labels.outputs.labels) }}
+    runs-on: ["${{ inputs.label1 }}", "${{ inputs.label2 }}"]
     steps:
       - name: finally
         run: |
