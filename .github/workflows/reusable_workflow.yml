@@ -34,8 +34,9 @@ jobs:
         id: labels_json 
         run: |
           $labels_string = "${{ inputs.labels }}"
-          $labels_json = ConvertTo-Json $labels_string 
-          echo 'labels=[\"test\", \"self-hosted\"]' >> $ENV:GITHUB_OUTPUT
+          $labels_array = @($labels_string -split ',\s*')
+          $labels_json = ConvertTo-Json $labels_array 
+          echo "labels=$labels_json" >> $ENV:GITHUB_OUTPUT
         shell: powershell
 
       - name: test output
