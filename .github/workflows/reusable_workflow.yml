@@ -13,7 +13,7 @@ jobs:
   extracted-labels:
     runs-on: windows-latest
     env:
-      JSON_DOC: ${{inputs}}
+      JSON_DOC: ${{ inputs.labels }}
     outputs:
       json: ${{env.JSON_DOC}}
       labels: ${{ steps.labels_json.outputs.labels }}
