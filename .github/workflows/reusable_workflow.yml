@@ -35,7 +35,7 @@ jobs:
         run: |
           $labels_string = "${{ inputs.labels }}"
           $labels_array = @($labels_string -split ',\s*')
-          $labels_json = ConvertTo-Json $labels_array 
+          $labels_json = ConvertTo-Json $labels_array | Out-String
           echo "labels=$labels_json" >> $ENV:GITHUB_OUTPUT
         shell: powershell
 
