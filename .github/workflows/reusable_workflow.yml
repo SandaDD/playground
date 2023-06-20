@@ -21,7 +21,7 @@ jobs:
       - name: Welcome message
         id: JSON
         run: |
-          printf '%s\n' "$JSON_DOC" > foo.json1
+          printf '%s\n' "$JSON_DOC" > foo.json
           cat foo.json
 
       - name: extract labels
