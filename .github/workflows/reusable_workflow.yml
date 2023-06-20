@@ -13,7 +13,7 @@ jobs:
   extracted-labels:
     runs-on: windows-latest
     env:
-      JSON_DOC: ${{toJson(inputs)}}
+      JSON_DOC: ${{inputs}}
     outputs:
       json: ${{env.JSON_DOC}}
       labels: ${{ steps.labels_json.outputs.labels }}
@@ -27,6 +27,7 @@ jobs:
       - name: extract labels
         id: extractLabels
         run: |
+          echo "${{env.JSON_DOC.labels}}"
           echo "${{fromJson(env.JSON_DOC.labels)}}"
 
       - name: convert to JSON
