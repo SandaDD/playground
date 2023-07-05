@@ -35,7 +35,7 @@ jobs:
 
   run-on-extracted-labels:
     needs: extracted-labels
-    runs-on: ["${{fromJson (inputs.label) }}"]
+    runs-on: ubuntu-latest
     steps:
       - name: finally
         run: |
