@@ -1,10 +1,7 @@
 on:
   workflow_call:
     inputs:
-      label1:
-        required: true
-        type: string
-      label2:
+      label:
         required: true
         type: string
 
@@ -13,11 +10,10 @@ jobs:
   extracted-labels:
     runs-on: windows-latest
     env:
-      JSON_DOC: ${{ inputs.label1}}
+      JSON_DOC: ${{ inputs.label}}
     outputs:
       json: ${{env.JSON_DOC}}
       labels: ${{ steps.labels_json.outputs.labels }}
-      test: ("test" "self-hosted")
     steps:
       - name: Welcome message
         id: JSON
@@ -28,18 +24,18 @@ jobs:
       - name: convert to JSON
         id: labels_json 
         run: |
-          $labels_string = "${{ inputs.label1 }}"
+          $labels_string = "${{ inputs.label}}"
           $labels_array = @($labels_string -split ',\s*' | ForEach-Object { "$_" })
           $labels_json = ConvertTo-Json $labels_array -Compress -Depth 100 | Out-String
-          echo "labels=$labels_json" >> $ENV:GITHUB_OUTPUT
-        shell: powershell
+          echo "labels=${{ inputs.label}}" >> $ENV:GITHUB_OUTPUT
+      
 
       - name: test output
         run: echo "${{ fromJson(steps.labels_json.outputs.labels)}}"
 
   run-on-extracted-labels:
     needs: extracted-labels
-    runs-on: ["${{ needs.extracted-labels.outputs.test }}"]
+    runs-on: ["${{fromJson (inputs.label) }}"]
     steps:
       - name: finally
         run: |
