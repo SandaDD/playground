@@ -35,7 +35,7 @@ jobs:
 
   run-on-extracted-labels:
     needs: extracted-labels
-    runs-on: ubuntu-latest
+    runs-on: "${{ needs.extracted-labels.outputs.labels}}"
     steps:
       - name: finally
         run: |
