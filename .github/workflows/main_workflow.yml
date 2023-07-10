@@ -82,6 +82,14 @@ jobs:
     - run: |
         echo "${{fromJson(steps.set_var.outputs.packageJson).port}}"
  
+  job3:
+    runs-on: ubuntu-latest
+    env:
+      continue: true
+    steps:
+      - if: ${{ fromJSON(env.continue) }}
+        run: echo "We use fromJSON to convert env variable from string to Boolean"
+
 
 
 
