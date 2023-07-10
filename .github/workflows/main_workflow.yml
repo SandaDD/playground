@@ -77,7 +77,7 @@ jobs:
       run: |
         dir
         JSON=$(cat test.json)
-        echo "json=$JSON" >> $GITHUB_OUTPUT
+        echo echo "json<<EOF"$'\n'"$JSON"$'\n'EOF >> $GITHUB_OUTPUT
  
  
   read_from_JSON:
