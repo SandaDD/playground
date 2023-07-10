@@ -74,7 +74,7 @@ jobs:
     steps:
     - id: read-from-the-file
       run: |
-        JSON=$(cat ./test.json)
+        JSON=$(cat playground/test.json)
         echo "json=$JSON" >> $GITHUB_OUTPUT
  
  
