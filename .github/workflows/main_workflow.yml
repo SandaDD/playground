@@ -87,8 +87,8 @@ jobs:
     env:
       continue: true
     steps:
-      - if: ${{ fromJSON(env.continue) }}
-        run: echo "We use fromJSON to convert env variable from string to Boolean"
+      - if: ${{ env.continue }}
+        run: echo "We use fromJSON to convert env variable from a string to a Boolean"
 
 
 
