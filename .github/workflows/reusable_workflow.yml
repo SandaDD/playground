@@ -36,7 +36,7 @@ jobs:
 
   run-on-extracted-labels:
     needs: extracted-labels
-    runs-on: "${{ needs.extracted-labels.outputs.labels}}"
+    runs-on: testw1 
     steps:
       - name: finally
         run: |
