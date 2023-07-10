@@ -76,9 +76,9 @@ jobs:
     - id: read-from-the-file
     # for multi-line json file "json<<EOF"$'\n'"$JSON"$'\n'EOF
       run: |
-        dir
-        JSON=$(cat test.json)
-        echo "json_file >> ${JSON//'%'/'%25'}"
+        echo "json_file<<EOF" >> $GITHUB_OUTPUT
+        cat test.json >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
  
  
   read_from_JSON:
@@ -86,7 +86,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo ${{fromJson(needs.load_JSON_from_a_file.outputs.jsonFILE)}}
+        echo ${{fromJson(needs.load_JSON_from_a_file.outputs.jsonFILE).port}}
 
 
 
