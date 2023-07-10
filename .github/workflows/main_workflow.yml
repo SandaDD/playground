@@ -87,7 +87,6 @@ jobs:
     - run: |
         echo ${{needs.load_JSON_from_a_file.outputs.json}}
         echo ${{fromJson(needs.load_JSON_from_a_file.outputs.json)}}
-        echo ${{fromJson(needs.load_JSON_from_a_file.outputs.json).powers}}
 
 
 
