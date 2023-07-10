@@ -85,7 +85,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo ${{fromJson(needs.load_JSON_from_a_file.outputs.json)}}
+        echo ${{needs.load_JSON_from_a_file.outputs.json}}
 
 
 
