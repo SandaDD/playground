@@ -67,6 +67,26 @@ jobs:
         id: step5
         run: echo "matrix=${{ (matrix.who-to-greet)}}" >> $GITHUB_OUTPUT
         
+  load_JSON_from_a_file:
+    runs-on: ubuntu-latest
+    outputs:
+      json: ${{ steps.read-from-the-file.outputs.json }}
+    steps:
+    - id: read-from-the-file
+      run: |
+        JSON=$(cat ./test.json)
+        echo "json=$JSON" >> $GITHUB_OUTPUT
+ 
+ 
+  read_from_JSON:
+    needs: load_JSON_from_a_file
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo ${{fromJson(needs.load_JSON_from_a_file.outputs.json)}}
+
+
+
+
 
   test_new_env:
     needs: example_matrix
