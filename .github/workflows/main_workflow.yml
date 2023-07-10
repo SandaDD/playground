@@ -69,8 +69,6 @@ jobs:
         
   load_JSON_from_a_file:
     runs-on: ubuntu-latest
-    outputs:
-      jsonFILE: ${{ steps.read-from-the-file.outputs.json_file }}
     steps:
     - uses: actions/checkout@v2
     - id: set_var
