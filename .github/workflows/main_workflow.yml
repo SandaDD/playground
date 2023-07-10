@@ -70,14 +70,15 @@ jobs:
   load_JSON_from_a_file:
     runs-on: ubuntu-latest
     outputs:
-      json: ${{ steps.read-from-the-file.outputs.json }}
+      jsonFILE: ${{ steps.read-from-the-file.outputs.json_file }}
     steps:
     - uses: actions/checkout@v2
     - id: read-from-the-file
+    # for multi-line json file "json<<EOF"$'\n'"$JSON"$'\n'EOF
       run: |
         dir
         JSON=$(cat test.json)
-        echo echo "json<<EOF"$'\n'"$JSON"$'\n'EOF >> $GITHUB_OUTPUT
+        echo echo "json_file<<EOF"$'\n'"$JSON"$'\n'EOF >> $GITHUB_OUTPUT 
  
  
   read_from_JSON:
@@ -85,7 +86,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo ${{needs.load_JSON_from_a_file.outputs.json}}
+        echo ${{fromJson(needs.load_JSON_from_a_file.outputs.jsonFILE)}}
 
 
 

@@ -1,8 +1,17 @@
 [
   {
-    "name": "Molecule Man",
-    "age": 29,
-    "secretIdentity": "Dan Jukes",
-    "powers": ["Radiation resistance", "Turning tiny", "Radiation blast"]
+      "env":"dev",
+      "port":"8000",
+      "db_host":"DEV_DB_HOST"
+  },
+  {
+      "env":"dev2",
+      "port":"8002",
+      "db_host":"DEV2_DB_HOST"
+  },
+  {
+      "env":"dev3",
+      "port":"8003",
+      "db_host":"DEV3_DB_HOST"
   }
 ]
