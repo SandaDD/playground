@@ -36,7 +36,7 @@ jobs:
 
   run-on-extracted-labels:
     needs: extracted-labels
-    runs-on: testw1 
+    runs-on: test
     steps:
       - name: finally
         run: |
