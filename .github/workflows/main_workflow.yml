@@ -76,9 +76,7 @@ jobs:
     - id: read-from-the-file
     # for multi-line json file "json<<EOF"$'\n'"$JSON"$'\n'EOF
       run: |
-        echo "json_file<<EOF" >> $GITHUB_OUTPUT
-        cat test.json >> $GITHUB_OUTPUT
-        echo "EOF" >> $GITHUB_OUTPUT
+        echo "json_file=$(jq -c . < test.json)" >> $GITHUB_OUTPUT
  
  
   read_from_JSON:
