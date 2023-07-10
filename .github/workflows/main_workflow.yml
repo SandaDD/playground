@@ -78,7 +78,7 @@ jobs:
       run: |
         dir
         JSON=$(cat test.json)
-        echo "json_file >> ${JSON//'%'/'%25'} ""
+        echo "json_file >> ${JSON//'%'/'%25'}"
  
  
   read_from_JSON:
