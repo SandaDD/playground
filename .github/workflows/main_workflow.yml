@@ -75,6 +75,7 @@ jobs:
     - id: read-from-the-file
       run: |
         cd ..
+        dir
         JSON=$(cat test.json)
         echo "json=$JSON" >> $GITHUB_OUTPUT
  
