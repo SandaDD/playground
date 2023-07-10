@@ -78,7 +78,7 @@ jobs:
       run: |
         dir
         JSON=$(cat test.json)
-        echo echo "json_file<<EOF"$'\n'"$JSON"$'\n'EOF >> $GITHUB_OUTPUT 
+        echo "json_file >> ${JSON//'%'/'%25'} ""
  
  
   read_from_JSON:
