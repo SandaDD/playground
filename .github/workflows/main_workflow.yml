@@ -76,7 +76,7 @@ jobs:
     - id: read-from-the-file
     # for multi-line json file "json<<EOF"$'\n'"$JSON"$'\n'EOF
       run: |
-        echo json_file=cat test.json | jq '.port
+        echo json_file=cat test.json | jq '.port'
  
  
   read_from_JSON:
