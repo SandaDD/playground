@@ -87,7 +87,7 @@ jobs:
     env:
       continue: false
     steps:
-      - if: ${{fromJson(env.continue)}}
+      - if: ${{env.continue}}
         run: echo "Hello world"
 
 
