@@ -90,8 +90,11 @@ jobs:
       - if: ${{fromJson (env.continue)}}
         run: echo "Hello world"
 
-
-
+  Pester_testing:
+    runs-on: windows-latest
+    steps:
+      - name: Test createBuildPackage.ps1
+        run: Invoke-Pester -Script @{Path='scripts/cicd/test_createBuildPackage.Tests.ps1'; Parameters=@{installCFGJsonFilePath = 'scripts/cicd/test.json' }}
 
   test_new_env:
     needs: example_matrix
