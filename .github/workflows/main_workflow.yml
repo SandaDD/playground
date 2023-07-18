@@ -91,13 +91,13 @@ jobs:
         run: echo "Hello world"
 
   Pester_testing:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Test createBuildPackage.ps1 
         run: |
-          $container = New-PesterContainer -Path '.\scripts\cicd\test_createBuildPackage.Tests.ps1' -Data @{installCFGJsonFilePath = '.\scripts\cicd\test.json' }
+          $container = New-PesterContainer -Path 'test_createBuildPackage.Tests.ps1' -Data @{installCFGJsonFilePath = 'test.json' }
           Invoke-Pester -Container $container
-        shell: powershell
+ 
 
   test_new_env:
     needs: example_matrix
