@@ -93,10 +93,10 @@ jobs:
   Pester_testing:
     runs-on: windows-latest
     steps:
-      - name: Test createBuildPackage.ps1 # $container = New-PesterContainer -Path "C:\Users\u26a77\Desktop\playground\scripts\cicd\test_createBuildPackage.Tests.ps1" -Data @{installCFGJsonFilePath = "C:\Users\u26a77\Desktop\playground\scripts\cicd\test.json" }
-      #Invoke-Pester -Container $container
+      - name: Test createBuildPackage.ps1 
         run: |
-          Invoke-Pester test_createBuildPackage.Tests.ps1
+          $container = New-PesterContainer -Path C:\Users\u26a77\Desktop\playground\scripts\cicd\test_createBuildPackage.Tests.ps1 -Data @{installCFGJsonFilePath = C:\Users\u26a77\Desktop\playground\scripts\cicd\test.json }
+          Invoke-Pester -Container $container
 
   test_new_env:
     needs: example_matrix
@@ -109,7 +109,7 @@ jobs:
         env: 
           ENV_VAR: ${{ (vars.DUMMY_VALUE) }}
         run: | 
-          echo "$ENV_VAR"
+          echo "$ENV_VAR
           echo "$NAMES"
       
 

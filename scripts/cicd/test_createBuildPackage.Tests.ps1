@@ -1,6 +1,6 @@
 param ( [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
-        [string]$installCFGJsonFilePath = $PSScriptRoot\test.json
+        [string]$installCFGJsonFilePath 
       ) 
 
 BeforeAll  {
@@ -14,7 +14,7 @@ Describe 'createBuildPackage' {
     It 'check folder structure' {
 
 
-        $supportedOs.Count | Should -Be "3"
+        $supportedOs.Count | Should -Be "4"
 
     }
 
