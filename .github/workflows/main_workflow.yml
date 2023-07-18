@@ -95,7 +95,7 @@ jobs:
     steps:
       - name: Test createBuildPackage.ps1 
         run: |
-          cd "C:\Users\u26a77\Desktop\playground\.github\workflows"
+          Set-Location -Path "C:\Users\u26a77\Desktop\playground\.github\workflows"
           Invoke-Pester -Container (New-PesterContainer -Path . -Data @{ installCFGJsonFilePath = "scripts/cicd/test.json" })
 
   test_new_env:
