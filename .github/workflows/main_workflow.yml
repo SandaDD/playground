@@ -95,9 +95,7 @@ jobs:
     steps:
       - name: Test createBuildPackage.ps1 
         run: |
-          $container = New-PesterContainer -Path 'test_createBuildPackage.Tests.ps1' -Data @{installCFGJsonFilePath = 'test.json' }
-          Invoke-Pester -Container $container
- 
+          Invoke-Pester -Container (New-PesterContainer -Path . -Data @{ installCFGJsonFilePath = "scripts/cicd/test.json" })
 
   test_new_env:
     needs: example_matrix
