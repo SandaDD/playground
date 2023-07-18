@@ -96,7 +96,6 @@ jobs:
       - uses: actions/checkout@v3
       - name: Test createBuildPackage.ps1 
         run: |
-          Set-Location C:\Users\u26a77\Desktopqplayground\.github\workflows
           Invoke-Pester -Container (New-PesterContainer -Path . -Data @{ installCFGJsonFilePath = "scripts/cicd/test.json" })
 
   test_new_env:
