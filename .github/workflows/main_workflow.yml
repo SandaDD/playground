@@ -93,6 +93,7 @@ jobs:
   Pester_testing:
     runs-on: windows-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Test createBuildPackage.ps1 
         run: |
           Set-Location C:\Users\u26a77\Desktopqplayground\.github\workflows
