@@ -1,4 +1,4 @@
-param ( [Parameter(Mandatory=$true)]
+param ( 
         [ValidateNotNullOrEmpty()]
         [string]$installCFGJsonFilePath 
       ) 
