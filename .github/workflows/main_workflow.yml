@@ -96,7 +96,7 @@ jobs:
       - name: Test createBuildPackage.ps1
         run: |
           Write-Output dir
-          $container = New-PesterContainer -Path 'scripts/cicd/test_createBuildPackage.Tests.ps1' -Data @{installCFGJsonFilePath = 'scripts/cicd/test.json' }
+          $container = New-PesterContainer -Path 'scripts/cicd/test_createBuildPackage.ps1' -Data @{installCFGJsonFilePath = 'scripts/cicd/test.json' }
           Invoke-Pester -Container $container
 
   test_new_env:
