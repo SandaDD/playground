@@ -1,6 +1,6 @@
 param ( [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
-        [string]$installCFGJsonFilePath
+        [string]$installCFGJsonFilePath = $PSScriptRoot\test.json
       ) 
 
 BeforeAll  {
