@@ -92,11 +92,13 @@ jobs:
 
   Pester_testing:
     runs-on: windows-latest
+    env:
+      TEST_PATH: "scripts/cicd"
     steps:
       - uses: actions/checkout@v3
       - name: Test createBuildPackage.ps1 
         run: |
-          Invoke-Pester -Container (New-PesterContainer -Path . -Data @{installCFGJsonFilePath = "scripts/cicd/test.json" })
+          Invoke-Pester -Container (New-PesterContainer -Path . -Data @{installCFGJsonFilePath = ${{ env.TEST_PATH }}"/test.json" })
 
   test_new_env:
     needs: example_matrix
