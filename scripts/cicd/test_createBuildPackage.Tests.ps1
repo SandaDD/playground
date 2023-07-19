@@ -14,7 +14,7 @@ Describe 'createBuildPackage' {
     It 'check folder structure' {
 
 
-        $supportedOs.Count | Should -Be "4"
+        $supportedOs.Count | Should -Be "3"
 
     }
 
