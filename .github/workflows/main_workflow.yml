@@ -93,7 +93,7 @@ jobs:
   Pester_testing:
     runs-on: windows-latest
     env:
-      TEST_PATH: "scripts/cicdtest.json"
+      TEST_PATH: "scripts/cicd"
     steps:
       - uses: actions/checkout@v3
       - name: Test createBuildPackage.ps1 
